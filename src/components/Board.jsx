@@ -3,12 +3,40 @@ import React, {Component,Fragment} from 'react';
 import Square from './Square';
 
 class Board extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      //squares: Array(9).fill(null), this does th same
+      squares: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    xIsnext: true // this modifies the initial state
+    }
+  }
+  handleClick(i){
+    const squares = this.state.squares.slice();
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({squares: squares,
+    xIsNext: !this.state.xIsNext});// it flips xIsNext each time a player moves
+  }
   renderSquare(i) {
-    return <Square value={i} />;
+    return <Square value={this.state.squares[i]}
+      onClick={() =>
+        this.handleClick(i)}
+             />;
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: '+
+    (this.state.xIsNext ? 'X' : 'O');// the status hier is changed to display which player has the next turn.
 
     return (
       <Fragment>
