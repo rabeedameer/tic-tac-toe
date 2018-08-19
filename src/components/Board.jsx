@@ -1,7 +1,7 @@
 import React, {Component,Fragment} from 'react';
 
 import Square from './Square';
-
+import {setWinner} from './Square';
 class Board extends Component {
   constructor(props){
     super(props);
@@ -35,8 +35,14 @@ class Board extends Component {
   }
 
   render() {
-    const status = 'Next player: '+
-    (this.state.xIsNext ? 'X' : 'O');// the status hier is changed to display which player has the next turn.
+    const winner = setWinner(this.state.squares);
+    let status;
+    if (winner){
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' +
+      (this.state.xIsNext ? 'X' : 'O');// hier we called the function setWinner to check if the player has won => if yes, Winner X/O can be displayed
+    }
 
     return (
       <Fragment>
@@ -56,5 +62,6 @@ class Board extends Component {
     );
   }
 }
+
 
 export default Board
