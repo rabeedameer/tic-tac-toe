@@ -41,7 +41,7 @@ class Board extends Component {
       status = 'Winner: ' + winner;
     } else {
       status = 'Next player: ' +
-      (this.state.xIsNext ? 'X' : 'O');// hier we called the function setWinner to check if the player has won => if yes, Winner X/O can be displayed
+      (this.state.xIsNext ? 'X' : 'O');// here we called the function setWinner to check if the player has won => if yes, Winner X/O can be displayed
     }
 
     return (
