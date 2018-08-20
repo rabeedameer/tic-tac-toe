@@ -2,6 +2,25 @@ import React,{Component} from 'react';
 import Board from './Board';
 
 class Game extends Component {
+  constructor(props){ // set the initial state for the game
+    super(props);
+    this.state = {
+      history:[{
+        squares: [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+    }],
+    xIsNext: true,
+  };
+  }
   render() {
     return (
       <article className="game container mt-5">
