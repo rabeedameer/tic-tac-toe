@@ -3,24 +3,24 @@ import React, {Component,Fragment} from 'react';
 import Square from './Square';
 import {setWinner} from './Square';
 class Board extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     //squares: Array(9).fill(null), this does th same
-  //     squares: [
-  //     null,
-  //     null,
-  //     null,
-  //     null,
-  //     null,
-  //     null,
-  //     null,
-  //     null,
-  //     null
-  //   ],
-  //   xIsnext: true // this modifies the initial state
-  //   }
-  // }
+  constructor(props){
+    super(props);
+    this.state = {
+      //squares: Array(9).fill(null), this does th same
+      squares: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    xIsnext: true // this modifies the initial state
+    }
+  }
   handleClick(i){
     const squares = this.state.squares.slice();
     squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -41,7 +41,7 @@ class Board extends Component {
       status = 'Winner: ' + winner;
     } else {
       status = 'Next player: ' +
-      (this.state.xIsNext ? 'X' : 'O');// here we called the function setWinner to check if the player has won => if yes, Winner X/O can be displayed
+      (this.state.xIsNext ? 'X' : 'O');// hier we called the function setWinner to check if the player has won => if yes, Winner X/O can be displayed
     }
 
     return (
